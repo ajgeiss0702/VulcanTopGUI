@@ -81,22 +81,24 @@ public class TopGUI extends FastInv {
         for(Player player : players) {
             int i = 9 + players.indexOf(player);
             if(i >= getInventory().getSize()) break;
-            IPlayerData data = plugin.getVulcanAPI().getPlayerData(player);
-            ItemStack head = new ItemBuilder(plugin.getHeadUtils().getHeadItem(player.getUniqueId()))
-                    .name(color("&r"+player.getName()+" &7- &r"+data.getTotalViolations()+"&7VL"))
-                    .lore(colors(
-                            "",
-                            "&cCombat: &f"+data.getCombatViolations(),
-                            "&cMovement: &f"+data.getMovementViolations(),
-                            "&cPlayer: &f"+data.getPlayerViolations(),
-                            "&cAutoclicker: &f"+data.getAutoClickerViolations(),
-                            "&cTimer: &f"+data.getTimerViolations(),
-                            "&cScaffhold: &f"+data.getScaffoldViolations()
-                    ))
-                    .build();
-            setItem(i, head, e -> {
-                e.getWhoClicked().closeInventory();
-                Bukkit.dispatchCommand(e.getWhoClicked(), "vulcan clickalert "+player.getName());
+            Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                IPlayerData data = plugin.getVulcanAPI().getPlayerData(player);
+                ItemStack head = new ItemBuilder(plugin.getHeadUtils().getHeadItem(player.getUniqueId()))
+                        .name(color("&r"+player.getName()+" &7- &r"+data.getTotalViolations()+"&7VL"))
+                        .lore(colors(
+                                "",
+                                "&cCombat: &f"+data.getCombatViolations(),
+                                "&cMovement: &f"+data.getMovementViolations(),
+                                "&cPlayer: &f"+data.getPlayerViolations(),
+                                "&cAutoclicker: &f"+data.getAutoClickerViolations(),
+                                "&cTimer: &f"+data.getTimerViolations(),
+                                "&cScaffhold: &f"+data.getScaffoldViolations()
+                        ))
+                        .build();
+                setItem(i, head, e -> {
+                    e.getWhoClicked().closeInventory();
+                    Bukkit.dispatchCommand(e.getWhoClicked(), "vulcan clickalert "+player.getName());
+                });
             });
         }
     }
@@ -128,6 +130,6 @@ public class TopGUI extends FastInv {
 
     private void changeSort(ViolationType newSort) {
         sortingBy = newSort;
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, this::refreshItems);
+        refreshItems();
     }
 }

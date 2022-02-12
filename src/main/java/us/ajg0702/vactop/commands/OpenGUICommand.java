@@ -33,7 +33,8 @@ public class OpenGUICommand extends BaseCommand {
             return;
         }
 
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> plugin.getTopGUI().refreshItems());
+        //Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> plugin.getTopGUI().refreshItems());
+        plugin.getTopGUI().refreshItems();
         plugin.getTopGUI().open((Player) sender.getHandle());
     }
 }
