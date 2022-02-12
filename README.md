@@ -12,6 +12,10 @@ When you click on a head, it runs `/vulcan clickalert %player%`. So basically it
 
 You can click the items at the top to sort the different alert categories (total, combat, movement, player, autoclicker, timer, and scaffhold)
 
+## Download
+
+Download from [GitHub releases](https://github.com/ajgeiss0702/VulcanTopGUI/releases) (on the left or click the link)
+
 ## Support
 
 If you want to ask questions, feel free to join [my discord](https://discord.gg/cqdBNbq)
