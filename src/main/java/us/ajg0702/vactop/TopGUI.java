@@ -128,6 +128,6 @@ public class TopGUI extends FastInv {
 
     private void changeSort(ViolationType newSort) {
         sortingBy = newSort;
-        refreshItems();
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, this::refreshItems);
     }
 }
