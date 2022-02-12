@@ -20,7 +20,8 @@ dependencies {
 
     compileOnly(group = "org.spigotmc", name = "spigot", version = "1.16.5-R0.1-SNAPSHOT")
 
-    compileOnly(files("libs/private/VulcanAPI.jar"))
+    //compileOnly(files("libs/private/VulcanAPI.jar"))
+    compileOnly("me.frep:vulcan-api:1.0.0")
 
     implementation("fr.mrmicky:FastInv:3.0.3")
     implementation("us.ajg0702:ajUtils:1.1.18")
