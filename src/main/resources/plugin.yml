@@ -1,0 +1,12 @@
+name: VulcanTopGUI
+version: "@VERSION@"
+author: ajgeiss0702
+api-version: 1.13
+main: us.ajg0702.vactop.TopPlugin
+website: https://github.com/ajgeiss0702/VulcanTopGUI
+depend:
+  - Vulcan
+commands:
+  topviolations:
+    aliases: [topvl]
+    permission: "vulcan.topgui"
