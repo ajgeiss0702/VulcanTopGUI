@@ -1,6 +1,7 @@
 package us.ajg0702.vactop.commands;
 
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import us.ajg0702.commands.BaseCommand;
 import us.ajg0702.commands.CommandSender;
@@ -32,7 +33,9 @@ public class OpenGUICommand extends BaseCommand {
             return;
         }
 
-        plugin.getTopGUI().refreshItems();
-        plugin.getTopGUI().open((Player) sender.getHandle());
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+            plugin.getTopGUI().refreshItems();
+            Bukkit.getScheduler().runTask(plugin, () -> plugin.getTopGUI().open((Player) sender.getHandle()));
+        });
     }
 }
