@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
@@ -118,6 +119,11 @@ public class TopGUI extends FastInv {
             r.add(color(msg));
         }
         return r;
+    }
+
+    @Override
+    protected void onClick(InventoryClickEvent e) {
+        e.setCancelled(true);
     }
 
     private void changeSort(ViolationType newSort) {
