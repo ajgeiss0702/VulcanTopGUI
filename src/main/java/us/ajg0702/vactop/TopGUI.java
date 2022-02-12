@@ -79,7 +79,7 @@ public class TopGUI extends FastInv {
 
         for(Player player : players) {
             int i = 9 + players.indexOf(player);
-            if(i > getInventory().getSize()) break;
+            if(i >= getInventory().getSize()) break;
             IPlayerData data = plugin.getVulcanAPI().getPlayerData(player);
             ItemStack head = new ItemBuilder(plugin.getHeadUtils().getHeadItem(player.getUniqueId()))
                     .name(color("&r"+player.getName()+" &7- &r"+data.getTotalViolations()+"&7VL"))
