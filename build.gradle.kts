@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
     maven { url = uri("https://repo.codemc.io/repository/nms/") }
     maven { url = uri("https://jitpack.io") }
-    maven { url = uri("https://repo.ajg0702.us/") }
+    maven { url = uri("https://repo.ajg0702.us/releases/") }
     maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
 }
 
