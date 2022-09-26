@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "us.ajg0702"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -29,9 +29,9 @@ dependencies {
     implementation("us.ajg0702.commands.platforms.bukkit:bukkit:1.0.0-pre14")
     implementation("us.ajg0702.commands.api:api:1.0.0-pre14")
 
-    implementation("net.kyori:adventure-api:4.9.3")
-    implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT")
-    implementation("net.kyori:adventure-platform-bukkit:4.0.1")
+    implementation("net.kyori:adventure-api:4.11.0")
+    implementation("net.kyori:adventure-text-minimessage:4.11.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.1.2")
 }
 
 tasks.getByName<Test>("test") {
@@ -45,6 +45,11 @@ tasks.withType<ProcessResources> {
             "VERSION" to project.version.toString()
         )
     )
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 tasks.shadowJar {

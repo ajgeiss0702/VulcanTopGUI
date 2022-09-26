@@ -59,13 +59,13 @@ public class TopGUI extends FastInv {
                 e -> changeSort(ViolationType.AUTOCLICKER)
         );
         setItem(6,
-                glowIfActive(ViolationType.TIMER, new ItemBuilder(Material.CLOCK)
+                glowIfActive(ViolationType.TIMER, new ItemBuilder(findMaterial("CLOCK", "WATCH"))
                         .name(color("&6Timer Violations"))
                 ).build(),
                 e -> changeSort(ViolationType.TIMER)
         );
         setItem(7,
-                glowIfActive(ViolationType.SCAFFHOLD, new ItemBuilder(Material.SCAFFOLDING)
+                glowIfActive(ViolationType.SCAFFHOLD, new ItemBuilder(findMaterial("SCAFFOLDING", "LADDER"))
                         .name(color("&6Scaffhold Violations"))
                 ).build(),
                 e -> changeSort(ViolationType.SCAFFHOLD)
@@ -131,5 +131,14 @@ public class TopGUI extends FastInv {
     private void changeSort(ViolationType newSort) {
         sortingBy = newSort;
         refreshItems();
+    }
+
+    private Material findMaterial(String... possible) {
+        for (String p : possible) {
+            try {
+                return Material.valueOf(p);
+            } catch(IllegalArgumentException ignored) {}
+        }
+        throw new IllegalStateException("No possible material found for " + Arrays.toString(possible));
     }
 }
